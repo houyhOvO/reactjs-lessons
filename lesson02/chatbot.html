@@ -14,7 +14,10 @@
       function ChatInput() {
         return (
           <>
-            <input placeholder="Send a message to chatbot" size="30"/>
+            <input 
+              placeholder="Send a message to chatbot" 
+              size="30"
+            />
             <button>Send</button>
           </>
         );
@@ -25,33 +28,53 @@
         // const sender = props.sender;
         // const { message, sender } = props;
 
-        if (sender === 'robot') {
-          return (
-            <div>
-              <img src="robot.png" width="50" />
-              {message}
-            </div>
-          );
-
-        }
+        // if (sender === 'robot') {
+        //   return (
+        //     <div>
+        //       <img src="robot.png" width="50" />
+        //       {message}
+        //     </div>
+        //   );
+        // }
         return (
           <div>
+            {sender === 'robot' && (
+              <img src="robot.png" width="50" />
+            )}
             {message}
-            <img src="user.png" width="50" />
+            {sender === 'user' && (
+              <img src="user.png" width="50" />
+            )}
           </div>
         );
       }
-      const app = (
-        <>
-          <ChatInput />
-          <ChatMesssage message="hello chatbot" sender="user"/>
-          <ChatMesssage message="how can i help you?" sender="robot"/>
-          <ChatMesssage message="can you get me todays date" sender="user"/>
-          <ChatMesssage message="today is 24 Oct 2025" sender="robot"/>
-        </>
-      );
+
+      function App() {
+        return (
+          <>
+            <ChatInput />
+            <ChatMesssage 
+              message="hello chatbot" 
+              sender="user"
+            />
+            <ChatMesssage 
+              message="how can i help you?" 
+              sender="robot"
+            />
+            <ChatMesssage 
+              message="can you get me todays date" 
+              sender="user"
+            />
+            <ChatMesssage 
+              message="today is 24 Oct 2025" 
+              sender="robot"
+            />
+          </>
+        );
+      }
+      
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(app);
+      ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
