@@ -49,26 +49,45 @@
         );
       }
 
+      function ChatMessages() {
+        const chatMesssages = [{
+          message: 'hello chatbot',
+          sender: 'user',
+          id: 'id1'
+        }, {
+          message: 'how can i help you?',
+          sender: 'robot',
+          id: 'id2'
+        }, {
+          message: 'can you get me todays date',
+          sender: 'user',
+          id: 'id3'
+        }, {
+          message: 'today is 24 Oct 2025',
+          sender: 'robot',
+          id: 'id4'
+        }];
+
+        return (
+          <>
+            {chatMesssages.map((chatMesssage) => {
+              return (
+                <ChatMesssage 
+                  message={chatMesssage.message} 
+                  sender={chatMesssage.sender}
+                  key={chatMesssage.id}
+                />
+              );
+            })}
+          </>
+        );
+      }
+
       function App() {
         return (
           <>
             <ChatInput />
-            <ChatMesssage 
-              message="hello chatbot" 
-              sender="user"
-            />
-            <ChatMesssage 
-              message="how can i help you?" 
-              sender="robot"
-            />
-            <ChatMesssage 
-              message="can you get me todays date" 
-              sender="user"
-            />
-            <ChatMesssage 
-              message="today is 24 Oct 2025" 
-              sender="robot"
-            />
+            <ChatMessages />
           </>
         );
       }
